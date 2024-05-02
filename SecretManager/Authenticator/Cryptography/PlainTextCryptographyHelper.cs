@@ -1,4 +1,4 @@
-﻿using SecretManager.Authenticator.Models;
+﻿using SecretManager.Interfaces;
 
 namespace SecretManager.Authenticator.EncryptionDecryption
 {

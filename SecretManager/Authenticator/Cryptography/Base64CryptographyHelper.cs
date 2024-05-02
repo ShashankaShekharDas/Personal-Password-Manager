@@ -1,4 +1,4 @@
-﻿using SecretManager.Authenticator.Models;
+﻿using SecretManager.Interfaces;
 using System.Text;
 
 namespace SecretManager.Authenticator.Cryptography

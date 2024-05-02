@@ -1,5 +1,5 @@
-﻿using SecretManager.Authenticator.Models;
-using SecretManager.Factory;
+﻿using SecretManager.Factory;
+using SecretManager.Interfaces;
 
 namespace SecretManager.Authenticator.Authenticators
 {

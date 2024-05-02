@@ -1,4 +1,4 @@
-﻿namespace SecretManager.Authenticator.Models
+﻿namespace SecretManager.Interfaces
 {
     public interface IAuthenticator
     {

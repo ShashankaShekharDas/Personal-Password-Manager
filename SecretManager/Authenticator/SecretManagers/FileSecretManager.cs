@@ -1,4 +1,4 @@
-﻿using SecretManager.Authenticator.Models;
+﻿using SecretManager.Interfaces;
 
 namespace SecretManager.Authenticator.SecretManagers
 {
@@ -7,6 +7,12 @@ namespace SecretManager.Authenticator.SecretManagers
         private readonly string _secretStorageLocation = "C:\\Users\\gudur\\OneDrive\\Desktop\\Learn\\C#\\SecretManager\\SecretManager\\TestSecretStore\\";
         private readonly string _secretStorageFile = "credentials.txt";
         private readonly ICryptographyHelper _encryptionDecryptionHelper = encryptionDecryptionHelper;
+
+        public FileSecretManager(ICryptographyHelper encryptionDecryptionHelper, string secretStorageLocation, string secretStorageFile) : this(encryptionDecryptionHelper)
+        {
+            _secretStorageLocation = secretStorageLocation;
+            _secretStorageFile = secretStorageFile;
+        }
 
         public bool Authenticate(string secret)
         {

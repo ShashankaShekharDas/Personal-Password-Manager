@@ -1,10 +1,10 @@
 ﻿using SecretManager.Authenticator.Cryptography;
 using SecretManager.Authenticator.EncryptionDecryption;
-using SecretManager.Authenticator.Models;
+using SecretManager.Interfaces;
 
 namespace SecretManager.Factory
 {
-    public sealed class CryptographyHelperFactory
+    public static class CryptographyHelperFactory
     {
         public static ICryptographyHelper GetCryptographyHelper(string type)
         {
