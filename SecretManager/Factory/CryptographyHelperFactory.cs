@@ -10,7 +10,6 @@ namespace SecretManager.Factory
         {
             return type switch
             {
-                "PlainText" => new PlainTextCryptoGraphyHelper(),
                 "Base64" => new Base64CryptographyHelper(),
                 _ => new PlainTextCryptoGraphyHelper(),
             };

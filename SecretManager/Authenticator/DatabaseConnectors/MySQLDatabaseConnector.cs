@@ -6,7 +6,7 @@ using System.Data.Common;
 
 namespace SecretManager.Authenticator.DatabaseConnectors
 {
-    public sealed class MySqlDatabaseConnector<T>(string server, string username, string password, string database) 
+    public class MySqlDatabaseConnector<T>(string server, string username, string password, string database)
         : AbstractDatabaseConnecter<T>(new DatabaseConnectionRecord { Server = server, UserName = username, Password = password }, database)
         where T : IDatabaseTableManager
     {
@@ -19,7 +19,9 @@ namespace SecretManager.Authenticator.DatabaseConnectors
                 .Replace("{user}", _record.UserName)
                 .Replace("{password}", _record.Password)
                 .Replace("{database}", _database);
-            return new MySqlConnection(connectionString);
+            var connection = new MySqlConnection(connectionString);
+            connection.Open();
+            return connection;
         }
 
         public override IEnumerable<T> GetData(string table, T tableData)
@@ -32,7 +34,6 @@ namespace SecretManager.Authenticator.DatabaseConnectors
             var whereConditionList = conditions.Select(condition => $"{condition[0]} = '{condition[1]}'");
 
             using var connection = CreateConnection();
-            connection.Open();
             var command = new MySqlCommand
             {
                 Connection = (MySqlConnection)connection,
@@ -57,7 +58,6 @@ namespace SecretManager.Authenticator.DatabaseConnectors
             if (dataToInsert.Count == 0) return 0;
 
             using var connection = CreateConnection();
-            connection.Open();
             var command = new MySqlCommand
             {
                 Connection = (MySqlConnection)connection,

@@ -2,7 +2,7 @@
 
 namespace SecretManager.Authenticator.SecretManagers
 {
-    internal sealed class FileSecretManager(ICryptographyHelper encryptionDecryptionHelper) : ISecretManager
+    public sealed class FileSecretManager(ICryptographyHelper encryptionDecryptionHelper) : ISecretManager
     {
         private readonly string _secretStorageLocation = "C:\\Users\\gudur\\OneDrive\\Desktop\\Learn\\C#\\SecretManager\\SecretManager\\TestSecretStore\\";
         private readonly string _secretStorageFile = "credentials.txt";
@@ -16,9 +16,14 @@ namespace SecretManager.Authenticator.SecretManagers
 
         public bool Authenticate(string secret)
         {
-            var readSecret = File.ReadAllText(Path.Combine(_secretStorageLocation, _secretStorageFile))
+            var path = Path.Combine(_secretStorageLocation, _secretStorageFile);
+            if (!File.Exists(path))
+            {
+                return false;
+            }
+            var readSecret = File.ReadAllText(path)
                 .Replace(Environment.NewLine, string.Empty);
-            return !string.IsNullOrEmpty(secret) && 
+            return !string.IsNullOrEmpty(secret) &&
                 _encryptionDecryptionHelper.Decipher(readSecret) == secret;
         }
 

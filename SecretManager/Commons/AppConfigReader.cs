@@ -3,7 +3,8 @@ using System.Configuration;
 
 namespace SecretManager.Commons
 {
-    public static class AppConfigReader
+    //SHOULD BE TESTED
+    internal static class AppConfigReader
     {
         public static Dictionary<string, string?> ReadKeyValuePair(string sectionName)
         {

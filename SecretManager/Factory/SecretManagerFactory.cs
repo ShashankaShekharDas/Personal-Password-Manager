@@ -5,16 +5,10 @@ namespace SecretManager.Factory
 {
     public static class SecretManagerFactory
     {
-        // Would need assembly if SecretManager moves out to a different assembly.
-        // Till then => assembly name = null for creating objects
-        private static string _assemblyName = typeof(Program).Assembly.GetName().Name ?? "";
-
-        public static void SetAssembly(string assemblyName) => _assemblyName = assemblyName;
-
         public static IEnumerable<ISecretManager?> GetSecretManagerInstance(AuthenticatorTypes type, out ISecretManager? activeSecretManager)
         {
             //Later will be replaced with features
-            activeSecretManager = null; 
+            activeSecretManager = null;
             string sectionName = $"secretManagerActive/{type}";
             try
             {

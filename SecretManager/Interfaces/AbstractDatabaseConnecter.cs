@@ -3,6 +3,7 @@ using System.Data.Common;
 
 namespace SecretManager.Interfaces
 {
+    //Does it need to be abstract or Can it be an interface?
     public abstract class AbstractDatabaseConnecter<T>(DatabaseConnectionRecord record, string database) where T : IDatabaseTableManager
     {
         protected readonly DatabaseConnectionRecord _record = record;

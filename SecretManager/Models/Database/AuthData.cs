@@ -17,8 +17,8 @@ namespace SecretManager.Models.Database
 
             if (PersonId.HasValue) result.Add(["PersonId", PersonId.ToString()]);
 
-            if (Secret != null) result.Add([ "Secret", Secret ]);
-            if (Type != null) result.Add([ "Type", Type ]);
+            if (Secret != null) result.Add(["Secret", Secret]);
+            if (Type != null) result.Add(["Type", Type]);
 
             return result;
         }

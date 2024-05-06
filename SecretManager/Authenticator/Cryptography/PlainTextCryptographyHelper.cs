@@ -2,7 +2,7 @@
 
 namespace SecretManager.Authenticator.EncryptionDecryption
 {
-    internal sealed class PlainTextCryptoGraphyHelper : ICryptographyHelper
+    public sealed class PlainTextCryptoGraphyHelper : ICryptographyHelper
     {
         public string Decipher(string data) => data;
 

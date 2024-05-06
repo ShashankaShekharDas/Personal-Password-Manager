@@ -7,10 +7,16 @@ namespace SecretManager.Authenticator.Authenticators
     {
         private readonly ISecretManager? _activeSecretManager;
 
-        public PasswordAuthenticator() 
+        public PasswordAuthenticator()
         {
             SecretManagerFactory.GetSecretManagerInstance(GetType(), out _activeSecretManager);
         }
+
+        public PasswordAuthenticator(ISecretManager? activeSecretManager)
+        {
+            _activeSecretManager = activeSecretManager;
+        }
+
         public bool Authenticate(string password)
         {
             return _activeSecretManager is not null && _activeSecretManager.Authenticate(password);
